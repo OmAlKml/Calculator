@@ -55,10 +55,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Navigate to CalculatorScreen
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CalculatorScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const CalculatorScreen()),
                 );
               },
-              child: const Text("Start"),
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(24.0), // Adjust size here
+              ),
+              child: const Text(
+                "Start",
+                style: TextStyle(
+                  color: Color(0xFF6A5ACD),
+                  fontSize: 30,
+                ),
+              ),
             ),
           ],
         ),
