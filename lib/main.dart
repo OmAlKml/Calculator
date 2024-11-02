@@ -15,12 +15,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CalculatorScreen(),
+      home: const CalculatorScreen(),
     );
   }
 }
 
 class CalculatorScreen extends StatefulWidget {
+  const CalculatorScreen({super.key});
+
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
 }
@@ -105,16 +107,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculator'),
-        backgroundColor: Colors.pink,
+        title: const Text(
+          'Calculator',
+          style: TextStyle(
+            fontSize: 25,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: const Color(0xFF6A5ACD),
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.pink,
-              Colors.blue,
-              Colors.green
+              Color(0xFF6A5ACD), // Slate Blue
+              Color(0xFF00CED1), // Dark Turquoise
             ], // Top to bottom gradient
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -149,37 +156,37 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildButton('7', Colors.deepOrange),
-                      _buildButton('8', Colors.deepOrange),
-                      _buildButton('9', Colors.deepOrange),
-                      _buildButton('/', Colors.redAccent),
+                      _buildButton('7', Colors.black),
+                      _buildButton('8', Colors.black),
+                      _buildButton('9', Colors.black),
+                      _buildButton('÷', Colors.black),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildButton('4', Colors.deepOrange),
-                      _buildButton('5', Colors.deepOrange),
-                      _buildButton('6', Colors.deepOrange),
-                      _buildButton('*', Colors.redAccent),
+                      _buildButton('4', Colors.black),
+                      _buildButton('5', Colors.black),
+                      _buildButton('6', Colors.black),
+                      _buildButton('×', Colors.black),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildButton('1', Colors.deepOrange),
-                      _buildButton('2', Colors.deepOrange),
-                      _buildButton('3', Colors.deepOrange),
-                      _buildButton('-', Colors.redAccent),
+                      _buildButton('1', Colors.black),
+                      _buildButton('2', Colors.black),
+                      _buildButton('3', Colors.black),
+                      _buildButton('-', Colors.black),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildButton('0', Colors.deepOrange),
-                      _buildButton('C', Colors.blueGrey), // Clear button
-                      _buildButton('=', Colors.green), // Equals button
-                      _buildButton('+', Colors.redAccent),
+                      _buildButton('0', Colors.black),
+                      _buildButton('C', Colors.black), // Clear button
+                      _buildButton('=', Colors.black), // Equals button
+                      _buildButton('+', Colors.black),
                     ],
                   ),
                 ],
@@ -202,7 +209,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         ),
       ),
       child: Text(buttonText,
-          style: const TextStyle(fontSize: 24, color: Colors.white)),
+          style: const TextStyle(fontSize: 24, color: Color(0xFF6A5ACD))),
     );
   }
 }
