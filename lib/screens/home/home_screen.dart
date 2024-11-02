@@ -1,4 +1,5 @@
 import 'package:calculator/screens/calc_screen.dart';
+import 'package:calculator/screens/drawer/side_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,22 +15,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF6A5ACD), // Slate Blue
-              Color(0xFF00CED1), // Dark Turquoise
-            ], // Top to bottom gradient
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF6A5ACD),
+          foregroundColor: Colors.white,
         ),
-        child: Stack(children: [
-          _screenContent(),
-        ]),
-      ),
-    );
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF6A5ACD), // Slate Blue
+                Color(0xFF00CED1), // Dark Turquoise
+              ], // Top to bottom gradient
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Stack(children: [
+            _screenContent(),
+          ]),
+        ),
+        drawer: const SideDrawer());
   }
 
   Widget _screenContent() {
