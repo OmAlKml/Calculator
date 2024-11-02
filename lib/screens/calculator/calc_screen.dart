@@ -20,9 +20,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       } else if (buttonText == '=') {
         // Calculate the result
         try {
-          result = _calculate(input).toString();
+          double calcResult = _calculate(input);
+          result = calcResult % 1 == 0 ? calcResult.toInt().toString() : calcResult.toString();
         } catch (e) {
           result = 'Error';
+          input = ''; // Clear input on error
         }
       } else {
         // Append the pressed button to input
@@ -103,7 +105,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             colors: [
               Color(0xFF6A5ACD), // Slate Blue
               Color(0xFF00CED1), // Dark Turquoise
-            ], // Top to bottom gradient
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -116,7 +118,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               alignment: Alignment.centerRight,
               child: Text(
                 input,
-                style: const TextStyle(fontSize: 24, color: Colors.white),
+                style: const TextStyle(fontSize: 60, color: Colors.white),
               ),
             ),
             const SizedBox(height: 10),
@@ -125,52 +127,67 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               child: Text(
                 result,
                 style: const TextStyle(
-                    fontSize: 32,
+                    fontSize: 50,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildButton('7', Colors.black),
-                      _buildButton('8', Colors.black),
-                      _buildButton('9', Colors.black),
-                      _buildButton('÷', Colors.black),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildButton('4', Colors.black),
-                      _buildButton('5', Colors.black),
-                      _buildButton('6', Colors.black),
-                      _buildButton('×', Colors.black),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildButton('1', Colors.black),
-                      _buildButton('2', Colors.black),
-                      _buildButton('3', Colors.black),
-                      _buildButton('-', Colors.black),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildButton('0', Colors.black),
-                      _buildButton('C', Colors.black), // Clear button
-                      _buildButton('=', Colors.black), // Equals button
-                      _buildButton('+', Colors.black),
-                    ],
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildButton('7', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('8', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('9', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('/', Colors.black),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildButton('4', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('5', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('6', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('*', Colors.black),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildButton('1', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('2', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('3', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('-', Colors.black),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildButton('0', Colors.black),
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('C', Colors.black), // Clear button
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('=', Colors.black), // Equals button
+                        const SizedBox(width: 10), // Space between buttons
+                        _buildButton('+', Colors.black),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -184,9 +201,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: () => buttonPressed(buttonText),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-        backgroundColor: buttonColor, // Button color
+        backgroundColor: buttonColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12), // Rounded corners
+          borderRadius: BorderRadius.circular(12),
         ),
       ),
       child: Text(buttonText,
