@@ -19,7 +19,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       } else if (buttonText == '=') {
         try {
           double calcResult = _calculate(input);
-          result = calcResult % 1 == 0 ? calcResult.toInt().toString() : calcResult.toString();
+          result = calcResult % 1 == 0
+              ? calcResult.toInt().toString()
+              : calcResult.toString();
         } catch (e) {
           result = 'Error';
           input = '';
@@ -90,9 +92,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         title: const Text(
           'Calculator',
           style: TextStyle(
-            fontSize: 25,
-            color: Colors.white,
-          ),
+              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color(0xFF6A5ACD),
       ),
@@ -204,7 +204,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         ),
       ),
       child: Text(buttonText,
-          style: const TextStyle(fontSize: 24, color: Color(0xFF6A5ACD))),
+          style: const TextStyle(
+            fontSize: 24,
+            color: Colors.white,
+          )),
     );
   }
 }
