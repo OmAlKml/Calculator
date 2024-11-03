@@ -79,12 +79,13 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
+                backgroundColor: Colors.black,
                 padding: const EdgeInsets.all(24.0), // Adjust size here
               ),
               child: const Text(
                 "Start",
                 style: TextStyle(
-                  color: Color(0xFF6A5ACD),
+                  color: Colors.white,
                   fontSize: 30,
                 ),
               ),
