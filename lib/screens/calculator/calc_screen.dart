@@ -14,20 +14,17 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   void buttonPressed(String buttonText) {
     setState(() {
       if (buttonText == 'C') {
-        // Clear the input
         input = '';
         result = '';
       } else if (buttonText == '=') {
-        // Calculate the result
         try {
           double calcResult = _calculate(input);
           result = calcResult % 1 == 0 ? calcResult.toInt().toString() : calcResult.toString();
         } catch (e) {
           result = 'Error';
-          input = ''; // Clear input on error
+          input = '';
         }
       } else {
-        // Append the pressed button to input
         input += buttonText;
       }
     });
@@ -70,17 +67,17 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     for (int i = 0; i < input.length; i++) {
       String character = input[i];
       if ('0123456789.'.contains(character)) {
-        number += character; // Build the number string
+        number += character;
       } else {
         if (number.isNotEmpty) {
           tokens.add(number);
           number = '';
         }
-        tokens.add(character); // Add the operator
+        tokens.add(character);
       }
     }
     if (number.isNotEmpty) {
-      tokens.add(number); // Add the last number
+      tokens.add(number);
     }
     return tokens;
   }
@@ -103,8 +100,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF6A5ACD), // Slate Blue
-              Color(0xFF00CED1), // Dark Turquoise
+              Color(0xFF6A5ACD),
+              Color(0xFF00CED1),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -142,11 +139,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _buildButton('7', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('8', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('9', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('/', Colors.black),
                       ],
                     ),
@@ -154,11 +151,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _buildButton('4', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('5', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('6', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('*', Colors.black),
                       ],
                     ),
@@ -166,11 +163,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _buildButton('1', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('2', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('3', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
                         _buildButton('-', Colors.black),
                       ],
                     ),
@@ -178,11 +175,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _buildButton('0', Colors.black),
-                        const SizedBox(width: 10), // Space between buttons
-                        _buildButton('C', Colors.black), // Clear button
-                        const SizedBox(width: 10), // Space between buttons
-                        _buildButton('=', Colors.black), // Equals button
-                        const SizedBox(width: 10), // Space between buttons
+                        const SizedBox(width: 10),
+                        _buildButton('C', Colors.black),
+                        const SizedBox(width: 10),
+                        _buildButton('=', Colors.black),
+                        const SizedBox(width: 10),
                         _buildButton('+', Colors.black),
                       ],
                     ),
