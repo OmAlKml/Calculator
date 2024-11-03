@@ -44,10 +44,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/images/app_logo.png",
-              width: 100,
-              height: 100,
+            Container(
+              color: Colors.black,
+              height: 250,
+              width: 250,
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/images/app_logo.png',
+                width: 200,
+                height: 400,
+                fit: BoxFit.contain,
+                colorBlendMode: BlendMode.darken,
+              ),
             ),
             const Text(
               "Welcome to the calculator app",
